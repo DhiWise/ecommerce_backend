@@ -1,0 +1,17 @@
+ecommerce_backend:
+  type: deploy
+  variables:
+    ID_RSA_NAME: $CI_PROJECT_PATH_SLUG"_dev"
+  environment:
+    name: staging
+  before_script:
+    - mkdir -p ~/.ssh
+    - echo -e "$REACT_ECOMM_SSH_KEY" > ~/.ssh/$ID_RSA_NAME
+    - chmod 600 ~/.ssh/$ID_RSA_NAME
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  script:
+    - ssh -i "~/.ssh/$ID_RSA_NAME" "$REACT_ECOMM_USER_NAME"@"$REACT_ECOMM_SERVER_HOST" "cd $REACT_ECOMM_PATH && git fetch origin master && git pull origin master && pm2 restart 7 && exit"
+  only:
+    - master
+  tags:
+    - ecommerce_backend

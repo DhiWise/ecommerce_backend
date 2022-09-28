@@ -1,0 +1,25 @@
+const express =  require('express');
+const router =  express.Router();
+router.use('/admin/auth',require('./auth'));
+router.use(require('./MasterRoutes'));
+router.use(require('./transactionsRoutes'));
+router.use(require('./contactUsRoutes'));
+router.use(require('./offersRoutes'));
+router.use(require('./sellerRoutes'));
+router.use(require('./newsLatterRoutes'));
+router.use(require('./bannerRoutes'));
+router.use(require('./ordersRoutes'));
+router.use(require('./cartRoutes'));
+router.use(require('./reviewsRoutes'));
+router.use(require('./wishlistRoutes'));
+router.use(require('./productRoutes'));
+router.use(require('./shortBySettingRoutes'));
+router.use(require('./colorDetailsRoutes'));
+router.use(require('./userRoutes'));
+router.use(require('./roleRoutes'));
+router.use(require('./projectRouteRoutes'));
+router.use(require('./routeRoleRoutes'));
+router.use(require('./userRoleRoutes'));
+router.use(require('./uploadRoutes'));
+
+module.exports = router;
